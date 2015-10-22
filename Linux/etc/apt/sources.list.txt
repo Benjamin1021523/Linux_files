@@ -1,0 +1,35 @@
+/etc/apt/sources.list
+這個檔案內容列出可獲得套裝軟體的鏡像站位址
+
+補充一下，鏡像站是針對原版網站內容的拷貝，期主要目的是位使用者提供一個相同資訊的不同來源。
+可以分散流量避免過度壅擠
+可以提高使用者在特定地區的下載速度。例如中國人在中國下載檔案，絕對比從美國來的快。
+　　因此Linux安裝完成之後很重要的步驟就是設定鏡像站。
+　　預設的檔案來源可能會是最原版的網站，也可能在安裝時自動選了比較近的來源，但是有更近的來源當然還是要再改下鏡像站。
+	在元智從元智下載中就比台大快吧(大概)
+
+更改的方式就是把檔案中原有的位址替換成鏡像站位址
+例如：
+http://ftp.us.debian.org/debian/
+↓
+http://ftp.cse.yzu.edu.tw/Linux/debian/
+
+注意末尾的目錄名稱應該要一樣(/debian/)，才不會出錯。
+
+另外Linux系的每次改版喜歡用吉祥物代表(詳見維基)
+　　例如Debian使用玩具總動員的人物名，ubuntu使用形容詞+某種動物代表版本。
+　　所以，想把ubuntu從14.10升級到15.04要怎麼做呢？
+	deb http://ftp.yzu.edu.tw/Linux/ubuntu/ utopic main restricted
+		"utopic"表示你的版本是14.04，英文代號是Utopic Unicorn，烏托邦的獨角獸
+		現在要改成15.04，這版的英文代號是Vivid Vervet，活潑的長尾黑顎猴
+		由檔案中的規則，我們把檔案中的"utopic"都改成"vivid"，變成這樣↓
+	deb http://ftp.yzu.edu.tw/Linux/ubuntu/ vivid main restricted
+　　然後執行sudo apt-get update，更新下載套件的清單。
+　　接著執行sudo apt-get upgrade，將清單上的套件下載下來進行安裝，這樣就能完成更新了。
+
+
+
+這個檔案的權限是：
+-rw-r--r--
+
+只有root可以修改，由於沒有安全問題所以其他人都可以觀看內容。
